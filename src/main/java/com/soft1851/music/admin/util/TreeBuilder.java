@@ -1,0 +1,57 @@
+package com.soft1851.music.admin.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TreeBuilder {
+    /**
+     * 两层循环实现建树
+     * @param treeNodes
+     * @return
+     */
+    public  static List<TreeNode> buildTreeByLoop(List<TreeNode> treeNodes){
+        List<TreeNode> trees = new ArrayList<>();
+        for(TreeNode treeNode : treeNodes){
+            if(treeNode.getParentId() == 0){
+                trees.add(treeNode);
+            }
+            for(TreeNode it :treeNodes){
+                if(it.getParentId().equals(treeNode.getId())){
+                    if(treeNode.getSubMenus() == null){
+                        treeNode.setSubMenus(new ArrayList<>());
+                    }
+                    treeNode.getSubMenus().add(it);
+                }
+            }
+        }
+        return trees;
+    }
+
+    /**
+     * 使用递归方法建树
+     * @param treeNode
+     * @param treeNodes
+     * @return
+     */
+    public static  TreeNode findChildren(TreeNode treeNode,List<TreeNode> treeNodes){
+        for(TreeNode it :treeNodes){
+            if(treeNode.getId().equals(it.getParentId())){
+                if(treeNode.getSubMenus() == null){
+                    treeNode.setSubMenus(new ArrayList<>());
+                }
+                treeNode.getSubMenus().add(findChildren(it,treeNodes));
+            }
+        }
+        return treeNode;
+    }
+
+    public static List<TreeNode> bulidTreeByRecursive(List<TreeNode> treeNodes){
+        List<TreeNode> trees = new ArrayList<>();
+        for(TreeNode treeNode :treeNodes){
+            if(treeNode.getParentId() == 0){
+                trees.add(findChildren(treeNode,treeNodes));
+            }
+        }
+        return trees;
+    }
+}
