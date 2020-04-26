@@ -23,5 +23,8 @@ public class WebConfig implements WebMvcConfigurer {
         //拦截路径可自行配置多个 可用，可隔开
         registry.addInterceptor(interceptor).addPathPatterns("/sysAdmin/login").excludePathPatterns("/**");
         registry.addInterceptor(jwtInterceptor).addPathPatterns("/**").excludePathPatterns("/sysAdmin/login", "/captcha").excludePathPatterns("/static/**");
+
+
     }
 }
+
