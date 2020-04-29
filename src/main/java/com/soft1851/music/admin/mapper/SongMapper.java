@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  *  Mapper 接口
  * </p>
  *
- * @author mq_xu
+ * @author ycshang
  * @since 2020-04-21
  */
 public interface SongMapper extends BaseMapper<Song> {
