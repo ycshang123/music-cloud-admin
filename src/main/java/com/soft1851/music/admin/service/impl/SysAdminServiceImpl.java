@@ -1,5 +1,6 @@
 package com.soft1851.music.admin.service.impl;
 
+import com.soft1851.music.admin.common.ResponseResult;
 import com.soft1851.music.admin.common.ResultCode;
 import com.soft1851.music.admin.dto.LoginDto;
 import com.soft1851.music.admin.entity.SysAdmin;
@@ -51,5 +52,18 @@ private SysAdminMapper sysAdminMapper;
             throw new CustomException("用户名不存在",ResultCode.USER_NOT_FOUND);
         }
 
+    }
+
+    @Override
+    public ResponseResult updateAdmin(SysAdmin sysAdmin) {
+//        SysAdmin sysAdmin1 = sysAdminMapper.getSysAdminById(sysAdmin.getId());
+        SysAdmin sysAdmin1 = new SysAdmin();
+        sysAdmin1.setId(sysAdmin.getId());
+        sysAdmin1.setName(sysAdmin.getName());
+        sysAdmin1.setPhone(sysAdmin.getPhone());
+        sysAdmin1.setGender(sysAdmin.getGender());
+        sysAdmin1.setAddress(sysAdmin.getAddress());
+        sysAdminMapper.updateById(sysAdmin1);
+        return ResponseResult.success(sysAdmin1);
     }
 }

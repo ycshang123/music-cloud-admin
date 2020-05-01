@@ -3,18 +3,24 @@ package com.soft1851.music.admin.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.time.LocalDateTime;
+
 import com.baomidou.mybatisplus.annotation.TableField;
+
 import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.soft1851.music.admin.annotation.PhoneNumber;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.Pattern;
+
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author mq_xu
@@ -48,7 +54,7 @@ public class SysAdmin extends Model<SysAdmin> {
      * 密码
      */
     @JsonIgnore
-    @TableField("password")
+    @TableField("pass word")
     private String password;
 
     /**
@@ -85,6 +91,25 @@ public class SysAdmin extends Model<SysAdmin> {
     @TableField("status")
     private Integer status;
 
+    /**
+     * 手机号
+     */
+    @PhoneNumber
+    @TableField("phone")
+    private String phone;
+
+    /**
+     * 性别
+     */
+    @Pattern(regexp = "((^男$|^女$|^UGN$))",message = "sex 值不在可选范围内")
+    @TableField("gender")
+    private String gender;
+
+    /**
+     * 地址
+     */
+    @TableField("address")
+    private String address;
 
     @Override
     protected Serializable pkVal() {

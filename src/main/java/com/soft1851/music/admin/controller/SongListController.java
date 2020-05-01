@@ -1,6 +1,7 @@
 package com.soft1851.music.admin.controller;
 
 
+import com.soft1851.music.admin.annotation.ControllerWebLog;
 import com.soft1851.music.admin.common.ResponseResult;
 import com.soft1851.music.admin.dto.PageDto;
 import com.soft1851.music.admin.entity.SongList;
@@ -35,6 +36,7 @@ public class SongListController {
      * @return
      */
     @GetMapping("/all")
+    @ControllerWebLog
     public List<Map<String, Object>> getSongListAll() {
         return songListService.getByType();
     }
@@ -46,6 +48,7 @@ public class SongListController {
      * @return
      */
     @PostMapping("/blur/page")
+    @ControllerWebLog
     public ResponseResult getAllSongList(@RequestBody PageDto pageDto) {
         return songListService.searchSongList(pageDto);
     }
@@ -57,6 +60,7 @@ public class SongListController {
      * @return
      */
     @PostMapping("/page")
+    @ControllerWebLog
     public Map<String, Object> getSongListByPage(@RequestBody PageDto pageDto) {
         return songListService.getByPage(pageDto);
     }
@@ -69,6 +73,7 @@ public class SongListController {
      * @return
      */
     @GetMapping("/blur")
+    @ControllerWebLog
     public List<SongList> fuzzySearch(@Param("field") String field) {
         return songListService.fuzzySearch(field);
     }
@@ -80,6 +85,7 @@ public class SongListController {
      * @return
      */
     @DeleteMapping("/delete")
+    @ControllerWebLog
     ResponseResult deleteSongListById(@Param("id") String id) {
         return songListService.deleteSongList(id);
     }
@@ -93,6 +99,7 @@ public class SongListController {
      */
 
     @PutMapping("/update")
+    @ControllerWebLog
     ResponseResult updateSongList(@RequestBody SongList songList) {
         return songListService.updateSongList(songList);
     }
@@ -105,11 +112,13 @@ public class SongListController {
      * @return
      */
     @DeleteMapping("/batchDelete")
+    @ControllerWebLog
     ResponseResult batchDeleteById(@Param("ids") String ids) {
         return songListService.batchDeleteById(ids);
     }
 
     @GetMapping("/search")
+    @ControllerWebLog
     public List<SongList> blurSelect(String field) {
         return songListService.blurSelect(field);
     }

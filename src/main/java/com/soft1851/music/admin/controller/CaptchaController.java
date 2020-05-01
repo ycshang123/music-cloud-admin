@@ -1,6 +1,7 @@
 package com.soft1851.music.admin.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.soft1851.music.admin.annotation.ControllerWebLog;
 import com.soft1851.music.admin.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +18,14 @@ import java.io.IOException;
 
 @RestController
 @Slf4j
+
 public class CaptchaController {
     @Resource
     private DefaultKaptcha defaultKaptcha;
     @Resource
     private RedisService redisService;
     @GetMapping("/captcha")
+    @ControllerWebLog
     public void defaultCaptcha(String name) {
         ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         assert sra != null;

@@ -5,10 +5,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.soft1851.music.admin.annotation.ExcelVoAttribute;
+import com.soft1851.music.admin.annotation.ForbiddenWord;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -30,6 +32,7 @@ public class Song extends Model<Song> {
     /**
      * 歌曲名称
      */
+    @ForbiddenWord
     @TableField("song_name")
     @ExcelVoAttribute(name = "歌曲名称", column = 1)
     private String songName;
@@ -108,6 +111,7 @@ public class Song extends Model<Song> {
     /**
      * 创建时间
      */
+    @Past
     @TableField("create_time")
     @ExcelVoAttribute(name = "创建时间", column = 7, isDateTime = true)
     private LocalDateTime createTime;

@@ -1,6 +1,7 @@
 package com.soft1851.music.admin.controller;
 
 
+import com.soft1851.music.admin.annotation.ControllerWebLog;
 import com.soft1851.music.admin.common.ResponseResult;
 import com.soft1851.music.admin.dto.PageDto;
 import com.soft1851.music.admin.entity.SongType;
@@ -31,6 +32,7 @@ public class SongTypeController {
      * @return
      */
     @PostMapping("/page")
+    @ControllerWebLog
     public List<SongType> getSongListByPage(@RequestBody PageDto pageDto){
         return  songTypeService.getSongTypeByPage(pageDto);
     }
@@ -42,11 +44,13 @@ public class SongTypeController {
      */
 
     @DeleteMapping("/batchDelete")
+    @ControllerWebLog
     ResponseResult batchDeleteById(@Param("ids") String ids){
         return songTypeService.bacthDeleteById(ids);
     }
 
     @GetMapping("/blur")
+    @ControllerWebLog
     public List<SongType> fuzzySearch(@Param("field") String field){
         return songTypeService.fuzzySearch(field);
     }

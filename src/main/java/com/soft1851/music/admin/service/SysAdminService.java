@@ -1,5 +1,6 @@
 package com.soft1851.music.admin.service;
 
+import com.soft1851.music.admin.common.ResponseResult;
 import com.soft1851.music.admin.dto.LoginDto;
 import com.soft1851.music.admin.entity.SysAdmin;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -26,4 +27,11 @@ public interface SysAdminService extends IService<SysAdmin> {
      * @return
      */
     SysAdmin getAdminAndRolesByName(String name);
+
+    /**
+     * 修改个人信息
+     * @param sysAdmin
+     * @return
+     */
+    ResponseResult updateAdmin(SysAdmin sysAdmin);
 }

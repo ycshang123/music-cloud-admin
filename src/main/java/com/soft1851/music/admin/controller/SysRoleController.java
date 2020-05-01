@@ -1,6 +1,7 @@
 package com.soft1851.music.admin.controller;
 
 
+import com.soft1851.music.admin.annotation.ControllerWebLog;
 import com.soft1851.music.admin.service.SysRoleService;
 import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import java.util.Map;
  *  前端控制器
  * </p>
  *
- * @author mq_xu
+ * @author ycshang
  * @since 2020-04-21
  */
 @RestController
@@ -25,6 +26,7 @@ public class SysRoleController {
     @Resource
     private SysRoleService sysRoleService;
     @GetMapping()
+    @ControllerWebLog
     public Map getRoleById(@Param("roleId") String roleId){
         return  sysRoleService.selectRoleById(Integer.parseInt(roleId));
     }

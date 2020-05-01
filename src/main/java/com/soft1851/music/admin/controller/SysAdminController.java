@@ -2,6 +2,7 @@ package com.soft1851.music.admin.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.soft1851.music.admin.annotation.ControllerWebLog;
 import com.soft1851.music.admin.common.ResponseResult;
 import com.soft1851.music.admin.common.ResultCode;
 import com.soft1851.music.admin.dto.LoginDto;
@@ -43,6 +44,7 @@ public class SysAdminController {
      * @return String
      */
     @PostMapping("/login")
+    @ControllerWebLog
     public Map login(@RequestBody LoginDto loginDto) {
         Map<String,Object> map = new TreeMap<>();
         log.info(loginDto.toString());
